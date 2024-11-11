@@ -1,0 +1,72 @@
+저장 /프로시저/ 내에서 반복문을 사용.
+인수에는 IN이라는 매개변수 타입을 사용한다.
+
+프로시저보기
+SHOW CREATE PROCEDURE my_database.example_procedure;
+
+프로시저삭제
+DROP PROCEDURE IF EXISTS my_database.example_procedure;
+
+-----------------------------------------------------------------------------------------------------------------상품을 추가하는 프로시저
+DELIMITER //
+
+CREATE PROCEDURE example_while(
+	IN campus_id INT, 
+	IN `name` VARCHAR(300), 
+	IN price INT, 
+	IN using_time VARCHAR(300), 
+	IN image_num VARCHAR(300), 
+	IN `explain` VARCHAR(300),
+	IN `count` INT)
+BEGIN
+    DECLARE counter INT DEFAULT 0;
+    
+    WHILE counter < count DO
+        SET counter = counter + 1;
+        
+        -- 반복 작업 수행
+        INSERT INTO event_object (campus_id, `NAME`, price, code_num, using_time, image_num, sell_check, `explain`)
+        VALUES  (campus_id, `name`, price, CONCAT('1234123412', LPAD(counter, 3, '0')), using_time, image_num, 0, `explain`);
+    END WHILE;
+END //
+
+DELIMITER ;
+
+---------------------------------------------------------------------------------------해당 상품의 정보를 변경하고 추가하는 프로시저
+DELIMITER //
+
+CREATE PROCEDURE Change_AND_Insert_Item(
+    IN origin_name VARCHAR(300), -- 변경할 상품을 정한다.
+    IN campus_id INT, -- 추가할 아이템의 캠퍼스 아이디 (바뀐 변수명)
+    IN item_name VARCHAR(300), -- 변수명 변경
+    IN price INT, 
+    IN using_time VARCHAR(300), 
+    IN image_num VARCHAR(300), 
+    IN description VARCHAR(300), -- 변수명 변경
+    IN count INT)
+BEGIN
+    DECLARE counter INT DEFAULT 0;
+    
+    -- 기존 아이템의 이름을 변경
+    UPDATE event_object
+    SET `name` = item_name, 
+        price = price,
+        using_time = using_time,
+        image_num = image_num,
+        `explain` = description
+    WHERE `name` = origin_name;
+    
+    -- 새로운 아이템을 추가
+    WHILE counter < count DO
+        SET counter = counter + 1;
+        
+        -- 반복 작업 수행
+        INSERT INTO event_object (campus_id, `name`, price, code_num, using_time, image_num, sell_check, `explain`)
+        VALUES (campus_id, item_name, price, CONCAT('1234123412', LPAD(counter, 3, '0')), using_time, image_num, 0, description);
+    END WHILE;
+END //
+
+DELIMITER ;
+---------------------------------------------------------------------------------------해당 상품의 정보를 변경하고 삭제하는 프로시저
+
+CALL Change_AND_Insert_Item('원룸4', 326100114, '원룸6', 1000, '2024.01.02 ~2024.01.02', '3333','바꾼 설명에제', 5);

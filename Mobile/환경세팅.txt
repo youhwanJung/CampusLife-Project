@@ -1,0 +1,26 @@
+- 안드로이드 에뮬레이터 버전
+Pixel 7 Pro API 30 (Android 11.0 ("R")) | 86
+
+----------------------------------------------
+
+깃 저장소 clone 한 후 바로 npm start하면 시작 안됨 터미널에 n
+pm install 하고 시작하면 됩니다.
+
+----------------------------------------------
+아이콘 사용법
+1. npm i react-native-vector-icons (터미널 입력 후 다운로드)
+   npm install --save-dev @types/react-native-vector-icons (터미널 입력 후 다운로드)
+
+2. android -> app -> build.gradle에 apply 코드 아래에
+    apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle") 복사 붙여넣기 저장
+
+3. 재빌드
+
+4. https://oblador.github.io/react-native-vector-icons/ 여기서 아이콘 이름 서치 가능
+
+
+--------------------------------------------------
+하단 네비게이션 바 사용법
+npm install @react-navigation/bottom-tabs
+
+---------------------------------------------------

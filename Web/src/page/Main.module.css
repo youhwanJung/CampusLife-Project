@@ -1,0 +1,84 @@
+.container {
+  display: flex;
+  flex: 1;
+  background-color: white;
+}
+
+.area {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  min-width: 500px;
+  align-items: baseline;
+}
+
+.selectLecture {
+  width: 300px;
+  text-align: center;
+}
+
+.btn {
+  background-color: #FFDECF;
+  width: 200px;
+  height: 80px;
+  border-radius: 5px;
+  color: black;
+  font-size: 20pt;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.btn:hover {
+  background-color: #f1c3ae;
+}
+
+.pagebtn {
+  background-color: #FFDECF;
+  width: 100%;
+  min-width: 100px;
+  height: 150px;
+  border-radius: 5px;
+  color: black;
+  font-size: 20pt;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+h5 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.pagebtn:hover {
+  background-color: #f1c3ae;
+}
+
+.test {
+  flex: 0.9;
+  min-width: 100px;
+  text-align: center;
+}
+
+hr {
+  background-color: black;
+  height: 2px;
+}
+
+h1 {
+  font-size: 40pt;
+  margin-right : 135px;
+}
